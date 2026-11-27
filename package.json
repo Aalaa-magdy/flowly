@@ -13,6 +13,7 @@
     "@emotion/styled": "^11.14.1",
     "@mui/material": "^9.6.0",
     "@mui/x-data-grid": "^9.18.0",
+    "@reduxjs/toolkit": "^2.15.0",
     "@svar-ui/react-gantt": "^2.8.3",
     "axios": "^1.21.1",
     "date-fns": "^4.4.0",
@@ -24,13 +25,16 @@
     "react-dnd": "^16.0.1",
     "react-dnd-html5-backend": "^16.0.1",
     "react-dom": "19.3.0",
-    "recharts": "^3.11.1"
+    "react-redux": "^9.3.1",
+    "recharts": "^3.11.1",
+    "redux-persist": "^6.0.0"
   },
   "devDependencies": {
     "@tailwindcss/turbopack": "4.3.3",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "dotenv": "^18.0.10",
     "eslint": "^9",
     "eslint-config-next": "16.4.6",
     "prettier": "^3.10.1",
