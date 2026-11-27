@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import { MuiThemeProvider } from "./lib/mui-theme-provider";
+import { QueryProvider } from "./lib/query-provider";
+import { ThemeSync } from "./lib/theme-sync";
 import "./globals.css";
 import DashboardWrapper from "./components/layout/dashboard-wrapper";
 
@@ -41,10 +43,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           disableTransitionOnChange
           storageKey="flowly-theme"
         >
+          <ThemeSync />
           <MuiThemeProvider>
-            <DashboardWrapper>
-              {children}
-            </DashboardWrapper>
+            <QueryProvider>
+              <DashboardWrapper>{children}</DashboardWrapper>
+            </QueryProvider>
           </MuiThemeProvider>
         </ThemeProvider>
       </body>

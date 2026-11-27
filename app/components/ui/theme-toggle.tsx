@@ -3,6 +3,7 @@
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useSyncExternalStore } from "react";
+import { useThemeStore } from "../../lib/theme-store";
 
 const subscribe = () => () => {};
 const getClientSnapshot = () => true;
@@ -20,6 +21,7 @@ export function ThemeToggle() {
     getServerSnapshot,
   );
   const { resolvedTheme, setTheme } = useTheme();
+  const setStoredTheme = useThemeStore((state) => state.setTheme);
 
   if (!mounted) {
     return <div className="size-10" aria-hidden="true" />;
@@ -31,7 +33,11 @@ export function ThemeToggle() {
   return (
     <button
       type="button"
-      onClick={() => setTheme(isDark ? "light" : "dark")}
+      onClick={() => {
+        const next = isDark ? "light" : "dark";
+        setTheme(next);
+        setStoredTheme(next);
+      }}
       aria-label={label}
       title={label}
       className="inline-flex size-10 items-center justify-center rounded-full border border-border bg-surface text-foreground transition-colors hover:bg-surface-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"

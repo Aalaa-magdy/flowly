@@ -1,12 +1,16 @@
 "use client";
 
 import { useState, type ReactNode } from "react";
+import { useUIStore } from "../../lib/store";
 import Navbar from "./navbar";
 import Sidebar from "./sidebar";
 
 export default function DashboardWrapper({ children }: { children: ReactNode }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+  const sidebarCollapsed = useUIStore((state) => state.sidebarCollapsed);
+  const toggleSidebarCollapsed = useUIStore(
+    (state) => state.toggleSidebarCollapsed,
+  );
 
   return (
     <div className="flex min-h-screen w-full bg-background font-sans text-foreground">
@@ -14,7 +18,7 @@ export default function DashboardWrapper({ children }: { children: ReactNode }) 
         open={sidebarOpen}
         collapsed={sidebarCollapsed}
         onClose={() => setSidebarOpen(false)}
-        onToggleCollapse={() => setSidebarCollapsed((value) => !value)}
+        onToggleCollapse={toggleSidebarCollapsed}
       />
       <div
         className={`flex min-w-0 flex-1 flex-col ${
