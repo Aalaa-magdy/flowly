@@ -1,4 +1,4 @@
-import { ThemeToggle } from "./theme-toggle";
+import { ThemeToggle } from "./components/ui/theme-toggle";
 
 const projects = [
   { name: "UI Design", tasks: 8, progress: 75, color: "var(--primary)" },
