@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import { MuiThemeProvider } from "./lib/mui-theme-provider";
 import "./globals.css";
+import DashboardWrapper from "./components/layout/dashboard-wrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -40,7 +41,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           disableTransitionOnChange
           storageKey="flowly-theme"
         >
-          <MuiThemeProvider>{children}</MuiThemeProvider>
+          <MuiThemeProvider>
+            <DashboardWrapper>
+              {children}
+            </DashboardWrapper>
+          </MuiThemeProvider>
         </ThemeProvider>
       </body>
     </html>
